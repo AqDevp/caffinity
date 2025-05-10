@@ -42,7 +42,7 @@ const RecipePage = () => {
   };
 
   if (loading) {
-    return <div className="loading">Loading recipes...</div>;
+    return <div className="loading" style={{ color: "white", background: "#0a0a0a", padding: "2rem", height: "50vh"}}>Loading recipes...</div>;
   }
 
   return (
@@ -64,19 +64,19 @@ const RecipePage = () => {
               className={`reaction-btn ${recipe.userReaction === 'like' ? 'active' : ''}`}
               onClick={() => handleReaction(recipe._id, 'like')}
             >
-              👍 {recipe.reactions?.likes || 0}
+              <i class="fas fa-thumbs-up"></i> {recipe.reactions?.likes || 0}
             </button>
             <button
               className={`reaction-btn ${recipe.userReaction === 'dislike' ? 'active' : ''}`}
               onClick={() => handleReaction(recipe._id, 'dislike')}
             >
-              👎 {recipe.reactions?.dislikes || 0}
+              <i class="fas fa-thumbs-down"></i> {recipe.reactions?.dislikes || 0}
             </button>
             <button
               className={`reaction-btn ${recipe.userReaction === 'neutral' ? 'active' : ''}`}
               onClick={() => handleReaction(recipe._id, 'neutral')}
             >
-              😐 {recipe.reactions?.neutral || 0}
+              <i class="fas fa-meh"></i> {recipe.reactions?.neutral || 0}
             </button>
           </div>
         </div>

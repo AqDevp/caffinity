@@ -1,12 +1,204 @@
+/* Base Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
- 
 }
 
+/* Navbar Styles */
+nav {
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 15vh;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  padding: 0 2rem;
+}
 
+nav.scrolled {
+  background-color: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  height: 10vh;
+}
 
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  font-size: 25px;
+  display: block;
+  padding: 10px 0;
+  position: relative;
+}
+
+nav ul li a::after {
+  content: '';
+  height: 3px;
+  width: 0%;
+  background-color: rgb(171, 134, 41);
+  display: block;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+.cof {
+  font-size: 2.8em;
+  font-weight: 200;
+  color: wheat;
+  margin: 0;
+}
+
+.cof:first-letter {
+  font-size: 45px;
+  color: rgb(171, 134, 41);
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 1001;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+  nav {
+    padding: 0 1rem;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-right: 10px;
+  }
+
+  .cof {
+    font-size: 2em;
+    margin-left: 8px;
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    transition: right 0.3s ease;
+    padding-top: 80px;
+    z-index: 1000;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .menu.active {
+    right: 0;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 15px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul li a {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  .content {
+    margin-left: -38px;
+  }
+
+  .auth-form {
+    margin: 18px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .cof {
+    font-size: 1.8em;
+  }
+
+  nav ul li a {
+    font-size: 18px;
+  }
+
+  .menu {
+    width: 85%;
+  }
+
+  .content {
+    margin-left: -38px;
+  }
+
+  .auth-form {
+    width: 350px;
+  }
+}
+
+/* Animation for menu items */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu.active ul li {
+  animation: fadeIn 0.3s ease forwards;
+  animation-delay: calc(0.1s * var(--i));
+  opacity: 0;
+}
+
+.menu.active ul li:nth-child(1) {
+  --i: 1;
+}
+.menu.active ul li:nth-child(2) {
+  --i: 2;
+}
+.menu.active ul li:nth-child(3) {
+  --i: 3;
+}
+.menu.active ul li:nth-child(4) {
+  --i: 4;
+}
+
+/* Rest of the original CSS remains unchanged */
+
+/* Main Header Styling */
 .headerig {
   background: linear-gradient(rgba(0, 0, 0, 0.8) 0%,rgba(0, 0, 0, 0.4) 60%,rgba(0, 0, 0, 0.2)100%), url(coffee3.jpg);
   height: 130vh;
@@ -17,150 +209,16 @@
   position: relative;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-ul li {
-  margin: 20px;
-}
-
-ul li a {
-  margin-right: 15px;
-  text-decoration: solid;
-  font-style: normal;
-  font-family: 'Courier New', Courier, monospace;
-  color: white;
-  font-size: 25px;
-}
-
-ul li a:hover::after {
-  color: rgb(171, 134, 41);
-  content: '';
-  height: 3px;
-  width: 100%;
-  background-color: rgb(171, 134, 41);
-  display: block;
-  border-radius: 4px;
-  transition: 0.5s;
-}
-
-.navl::after {
-  content: '';
-  height: 3px;
-  width: 0%;
-  background-color: rgb(171, 134, 41);
-  display: block;
-  border-radius: 4px;
-}
-
-.menu {
-  margin-left: 55px;
-  margin-right: 155px;
-  padding-top: 22px;
-}
-
-.cof {
-  font-size: 2.8em;
-  font-weight: 200;
-  margin-right: 55px;
-  margin-left: 120px;
-  padding-top: 22px;
-  color: wheat;
-}
-
-nav {
-  background-color: rgb(0, 0, 0);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-} 
+/* Remaining styles unchanged... */
 
 
-
-/* Slide In Animation for Navbar */
-@keyframes slideIn {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Adjusting Navbar Links for Android Devices */
-@media only screen and (max-width: 768px) {
-  nav {
-    animation: slideIn 1s ease-out; /* Slide animation for mobile */
-  }
-
-  ul {
-    flex-direction: column; /* Stack the nav items vertically on smaller screens */
-    align-items: center;
-  }
-
-  ul li {
-    margin: 15px 0; /* Adjust margin for smaller devices */
-  }
-
-  .menu {
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-top: 8px;
-  }
-
-  .cof {
-    font-size: 2em;
-    margin-left: 20px;
-  }
-
-  ul li a {
-    font-size: 8px; /* Reduce font size for mobile */
-  }
-
-  ul li a:hover::after {
-    color: rgb(171, 134, 41);
-    content: '';
-    height: 3px;
-    width: 100%;
-    background-color: rgb(171, 134, 41);
-    display: block;
-    border-radius: 4px;
-    transition: 0.5s;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .cof {
-    font-size: 1.8em;
-    margin-left: 15px;
-  }
-
-  ul li a {
-    font-size: 20px; /* Further reduce font size for small screens */
-  }
-
-  .menu {
-    margin-left: 10px;
-    margin-right: 10px;
-    padding-top: 10px;
-  }
-}
-
-
-
-
+/* Header Button */
 .headerig .btn-hdr {
   font-weight: bold;
   font-style: italic;
   text-decoration: none;
   position: absolute;
-  left: 2%;
+  left: 1%;
   top: 102%;
   background: transparent;
   font-size: 20px;
@@ -179,17 +237,13 @@ nav {
   font-weight: 200;
 }
 
-.headerig button:hover {
-  background-color: rgb(171, 134, 41);
-  color: whitesmoke;
-  
-}
-
+.headerig button:hover,
 .content .btn:hover {
   background-color: rgb(171, 134, 41);
   color: whitesmoke;
 }
 
+/* Content Styling */
 .header h1 {
   color: white;
   margin: 10px;
@@ -219,6 +273,7 @@ nav {
   padding-bottom: 20px;
 }
 
+/* Card Section */
 .headergg {
   background-color: black;
   color: white;
@@ -274,6 +329,7 @@ nav {
   object-fit: cover;
 }
 
+/* Footer Styling */
 .footer {
   padding: 50px 10%;
   border-top: 2px solid #333;
@@ -340,7 +396,7 @@ nav {
   text-align: center;
 }
 
-
+/* Animations */
 .txt {
   font-weight: 300;
   font-size: 3em;
@@ -348,20 +404,9 @@ nav {
   transition: all 0.8s ease;
 }
 
-.txt.shrink {
-  transform: scale(0.7);
-  opacity: 0;
-}
 
-.txt, .content p, .headerig .btn-hdr {
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-.txt.shrink, .content p.shrink, .headerig .btn-hdr.shrink {
-  transform: scale(0.7);
-  opacity: 0;
-}
-
+/* Reviews Section */
 .review-container {
   display: flex;
   align-items: center;
@@ -405,7 +450,7 @@ nav {
   color: #555;
 }
 
-/* Recipe Page Styles */
+/* Recipe Page */
 .recipe-page {
   display: flex;
   flex-wrap: wrap;
@@ -450,7 +495,6 @@ nav {
   color: #b8b2b2;
 }
 
-
 .recipe-content h4 {
   font-size: 24px;
   margin-top: 20px;
@@ -459,7 +503,7 @@ nav {
 }
 
 .recipe-content pre {
-  overflow-x:scroll ;
+  overflow-x: scroll;
   color: #938f8f;
   font-size: 18px;
 }
@@ -487,9 +531,7 @@ nav {
   transition: 0.2s;
 }
 
-
-
-/* Login and Register Styles */
+/* Login/Register Page */
 .auth-container {
   display: flex;
   justify-content: center;
@@ -565,6 +607,7 @@ nav {
   color: rgb(171, 134, 41);
 }
 
+/* Hide Scrollbar */
 ::-webkit-scrollbar {
   display: none;
 }

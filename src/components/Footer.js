@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="footer">
-      <h2>Questions? Email <a href="mailto:rexgaming998@gmail.com">rexgaming998@gmail.com</a></h2>
+      <h2>Questions? Email <a href="mailto:rexgaming998@gmail.com">Caffinity998@gmail.com</a></h2>
       
 
 

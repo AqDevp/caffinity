@@ -73,7 +73,7 @@ const RecommendationPage = () => {
   };
 
   if (loading) {
-    return <div className="loading">Loading recommendations...</div>;
+    return <div className="loading" style={{ color: "white", background: "#0a0a0a", padding: "2rem", height: "50vh"}}>Loading recommendations...</div>;
   }
 
   return (
@@ -82,7 +82,7 @@ const RecommendationPage = () => {
         Recommended Coffees Just For You ☕
       </h2>
       {recommendedCoffees.length === 0 ? (
-        <p style={{ color: "white", padding: "2rem" }}>
+        <p style={{ color: "white", padding: "2rem", height: "50vh"}}>
           Like some recipes to get recommendations!
         </p>
       ) : (
